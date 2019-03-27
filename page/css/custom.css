@@ -1,0 +1,66 @@
+@import  'http://fonts.googleapis.com/earlyaccess/notosanstc.css';
+
+body{
+	font-family: 'Noto Sans TC', sans-serif;
+}
+
+.header-area .header-top {
+    border-bottom: 1px solid #d3d3d3;
+}
+.header-default {
+    color: #6e6e6e;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.header-default p {
+    margin: 0;
+}
+
+.header-user-info {
+    padding: 10px 0;
+    text-align: right;
+}
+
+.header-user-info a {
+    border-left: 1px solid #f1f2f2;
+    color: #252525;
+    font-size: 12px;
+    line-height: 20px;
+    padding-left: 14px;
+    margin-right: 10px;
+}
+.header-user-info a:hover {
+    color: #009A86;
+    text-decoration: none;
+}
+
+.margin_top_20{
+    margin-top: 20px;
+}
+
+.category{
+}
+
+h3,
+.h3 {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h3 span {
+  font-size: 14px;
+  font-family: tahoma, arial, 'Hiragino Sans GB', '\5FAE\8F6F\96C5\9ED1', sans-serif;
+  margin-left: 20px;
+}
+
+/*导航*/
+#navbarSupportedContent a.nav-link{
+    padding: 0 30px;
+    font-size: 18px
+}
+
+#navbarSupportedContent a:hover {color: #009A86;}
