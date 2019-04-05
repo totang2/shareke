@@ -1,0 +1,86 @@
+version: '3'
+services:
+  web:
+    image: sharekeweb
+    build: ./web/
+    ports:
+      - "80:80"
+#  rabbitmqsvr:
+#    build: ./rabbitmq/
+#    image: "rabbitmq"
+#    ports:
+#      - "15672:15672"
+#      - "5672:5672"
+#    tty: true
+#    volumes:
+#      - rabbit1:/var/lib/rabbitmq
+#      #- ./conf/:/etc/rabbitmq/
+#    #command:  bash -c "sleep 10; rabbitmq-server;"
+#  redis:
+#    image: "redis:alpine"
+#  db:
+#    build: ./mysql/
+#    image: mysql-upload
+#    #mem_limit: 500M
+#    environment:
+#      MYSQL_DATABASE: 'pic'
+#      # So you don't have to use root, but you can if you like
+#      MYSQL_USER: 'admin'
+#      # You can use whatever password you like
+#      MYSQL_PASSWORD: 'pass'
+#      # Password for root access
+#      MYSQL_ROOT_PASSWORD: 'pass'
+#    ports:
+#      - "3306:3306"
+#    expose:
+#      # Opens port 3306 on the container
+#      - '3306'
+#      # Where our data will be persisted
+#    
+#    volumes:
+#      - my-db:/var/lib/mysql
+#      # Names our volume
+#      - ./mysql/init-db-sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+#      - ./mysql/init-db-sql/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+#      - ./mysql/init-db-sql/init-user.sh:/docker-entrypoint-initdb.d/3-init-user.sh
+#  #uploadsvr:
+#  #  image: uploadservice
+#  #  build: ./uploadsvr/
+#  #  ports:
+#  #    - "8080:8080"
+#  #  volumes:
+#  #    - uploaded-storage:/uploaded
+#  #  depends_on:
+#  #    - redis
+#  #    - db
+#  #    - rabbitmqsvr
+#    #mem_limit: 150M
+#  downloadsvr:
+#    image: downloadservice
+#    build: ./uploadsvr/
+#    ports:
+#      - "8081:8080"
+#    volumes:
+#      - uploaded-storage:/uploaded
+#    depends_on:
+#      - redis
+#      - db
+#      - rabbitmqsvr
+#    #mem_limit: 150M
+#
+#  #compresssvr:
+#  #  image: compressservice
+#  #  build: ./compresssvr/
+#  #  ports:
+#  #    - "8082:8080"
+#  #  volumes:
+#  #    - uploaded-storage:/uploaded
+#  #  depends_on:
+#  #    - redis
+#  #    - db
+#  #    - rabbitmqsvr
+#    #mem_limit: 150M
+#volumes:
+#    my-db:
+#    uploaded-storage:
+#    rabbit1:
