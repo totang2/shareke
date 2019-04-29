@@ -16,16 +16,16 @@
         <img class="mb-4" src="img/logo.jpg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">注册</h1>
         <div class="form-group">
-            <label for="exampleDropdownFormPhone" class="sr-only">手机号码</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPhone" placeholder="输入手机号码">
+            <label for="phone" class="sr-only">手机号码</label>
+            <input type="text" class="form-control" id="phone" placeholder="输入手机号码">
         </div>
         <div class="form-group">
-            <label for="exampleDropdownFormPassword1" class="sr-only">密码</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="输入密码">
+            <label for="password1" class="sr-only">密码</label>
+            <input type="password" class="form-control" id="password1" placeholder="输入密码">
         </div>
         <div class="form-group">
-            <label for="exampleDropdownFormPassword2" class="sr-only">确认密码</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="再次输入密码">
+            <label for="password2" class="sr-only">确认密码</label>
+            <input type="password" class="form-control" id="password2" placeholder="再次输入密码">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="verifyCode" placeholder="输入验证码">
@@ -33,10 +33,50 @@
                 发送验证码
             </a>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary mx-auto">注册</button>
-        <p class="mt-5 mb-2 text-muted">翻天印网络科技有限公司</p>
+        <button type="button" id="register" class="btn btn-lg btn-primary mx-auto">注册</button>
+        <p class="mt-5 mb-2 text-muted">杭州翻天印网络科技有限公司</p>
         <p class="mb-3 text-muted">© 2019-2010</p>
     </form>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#register").click(function() {
+                var phone = $("#phone").val();
 
+                var password1 = $("#password1").val();
+                var password2 = $("#password2").val();
+                var verifyCode= $("#verifyCode").val();
+                if (phone == '' || password1 == '' || password2 == '') {
+                    alert("Please fill all fields...!!!!!!");
+                } else if ((password1.length) < 8) {
+                    alert("Password should at least 8 character in length!");
+                } else if (!(password1).match(password2)) {
+                    alert("Your passwords don't match. Try again?");
+                } else {
+                    var payload = {
+                        "phone": phone,
+                        "password": password1,
+                        "verifyCode": verifyCode
+                        };
+                    $.ajax({
+                        type: "POST",
+                        url:"http://localhost:8080/api/register",
+                        contentType: "application/json",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        data:JSON.stringify(payload),
+                        success:function(data) {
+                            if (data.result == 'success') {
+                                $("form")[0].reset();
+                                alert('register success');
+                            }
+                        }});
+
+                }
+            });
+        });
+    </script>
 </body>
 </html>
