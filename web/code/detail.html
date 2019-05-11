@@ -14,20 +14,15 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-8">
-                    <img src="img/flower/flower-1.jpg" class="card-img" alt="...">
+                    <img src="img/flower/flower-1.jpg" class="card-img" id="image" alt="...">
                 </div>
                 <div class="col-md-4">
                     <div class="card-body product-info">
-                        <h1 class="card-title">电商平台微服实战，实现高并发抢购</h1>
+                        <h1 class="card-title" id="course-title">电商平台微服实战，实现高并发抢购</h1>
                         <p class="text-muted">上传人：<span>stranger</span></p>
-                        <div class="">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        <div id="score">
                         </div>
-                        <p class="card-text price">30</p>
+                        <p class="card-text price" id="price">30</p>
                         <button class="single_add_to_cart_button bt-lg">购买</button>
                     </div>
                 </div>
@@ -37,11 +32,12 @@
 
         <div>
             <h3>课程介绍</h3>
-            <p>强化学习实战视频培训教程概况：强化学习是当下爆火的机器学习经典模型，系列课程从实例出发，形象解读强化学习如何完整一个实际任务。由基本概念过度到马尔科夫决策过程，通过实例演示如何通过迭代求解来得出来好的决策。举例讲解强化学习（Q-Learning）算法的原理以及如何将强化学习和深度学习进行结合。后通过让AI自动玩游戏的项目实战实例演示如何实现用强化学习和卷积神经网络打造DQN网络模型。</p>
+            <p id="introduction">强化学习实战视频培训教程概况：强化学习是当下爆火的机器学习经典模型，系列课程从实例出发，形象解读强化学习如何完整一个实际任务。由基本概念过度到马尔科夫决策过程，通过实例演示如何通过迭代求解来得出来好的决策。举例讲解强化学习（Q-Learning）算法的原理以及如何将强化学习和深度学习进行结合。后通过让AI自动玩游戏的项目实战实例演示如何实现用强化学习和卷积神经网络打造DQN网络模型。</p>
         </div>
 
         <!--课程章节开始-->
-        <div class="mb-5">
+        <div class="mb-5" id="lessons">
+            <!--
             <a class="dropdown-toggle" data-toggle="collapse" href="#collapseSection" role="button" aria-expanded="false" aria-controls="collapseSection">
                 第一章：课程设计及项目架构设计介绍
             </a>
@@ -65,6 +61,7 @@
                 <p class="section"><a href="#">2. 动手实验</a></p>
                 <p class="section"><a href="#">2. 动手实验</a></p>
             </div>
+            -->
         </div>
         <!--课程章节结束-->
 
@@ -78,5 +75,84 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        function loadCourseDetail(){
+            $.ajax({
+                type: "GET",
+                url:"http://localhost:8080/api/course/detail?courseId=xxxx",
+                contentType: "application/json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                success:function(data) {
+                    if (data.result == 'success') {
+                        onGetCourseDetail(data.data);
+                    }else{
+                        console.log("get course detail failed");
+                    }
+                }});
+        }
+
+        function onGetCourseDetail(data){
+            console.log("get course detail success");
+            $('#image').attr('src', data.image);
+            $('#course-title').text(data.name);
+            for(var i = 0; i < data.scoreNum;i++){
+                $('#score').append('<i class="fa fa-star"></i>');
+            }
+            $('#price').text(data.price);
+            $('#introduction').text(data.intro);
+        }
+
+        function loadLessons(){
+            $.ajax({
+                type: "GET",
+                url:"http://localhost:8080/api/course/lessons?courseId=xxxx",
+                contentType: "application/json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                success:function(data) {
+                    if (data.result == 'success') {
+                        onGetCourseLesson(data.data);
+                    }else{
+                        console.log("get course detail failed");
+                    }
+                }});
+        }
+
+        function onGetCourseLesson(data){
+            console.log("get lesson success");
+            $.each(data, function(index, lesson){
+                createLessonDiv(lesson, index);
+            })
+        }
+
+        function createLessonDiv(lesson, index){
+
+            var sections = $('<div class="collapse"></div>');
+            sections.attr('id', 'collapse'+index);
+            $.each(lesson.sectionList, function(index, section){
+                sections.append('<p class="section"><a href="#">'+section.name+'</a></p>');
+            })
+
+            if(lesson.title == null){
+                $('#lessons').append(sections, '<br>');
+            }else{
+                var lessonTitle = $('<a class="dropdown-toggle" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseSection"></a>')
+                                .text(lesson.title);
+                lessonTitle.attr('href', '#collapse'+index);
+                $('#lessons').append(lessonTitle, sections, '<br>');
+            }
+        }
+
+        loadCourseDetail();
+        loadLessons();
+    </script>
 </body>
 </html>

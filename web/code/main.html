@@ -17,26 +17,26 @@
         <div class="header-top">
             <div class="row ">
                 <div class="col header-default">
-                    <p>用户未登录</p>
+                    <p id="login-status">用户未登录</p>
                 </div>
                 <div class="col header-user-info">
                     <a href="#">
                         <i class="fa fa-user"></i>
                         我的信息
                     </a>
-                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" id="menu-login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-lock"></i>
                         登录
                     </a>
                     <div class="dropdown-menu">
-                        <form class="px-4 py-3">
+                        <form class="px-4 py-3"  id="login">
                             <div class="form-group">
-                                <label for="exampleDropdownFormPhone" class="sr-only">手机号码</label>
-                                <input type="text" class="form-control" id="exampleDropdownFormPhone" placeholder="输入手机号码">
+                                <label for="phone" class="sr-only">手机号码</label>
+                                <input type="text" class="form-control" id="phone" placeholder="输入手机号码">
                             </div>
                             <div class="form-group">
-                                <label for="exampleDropdownFormPassword1" class="sr-only">密码</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="输入密码">
+                                <label for="password" class="sr-only">密码</label>
+                                <input type="password" class="form-control" id="password" placeholder="输入密码">
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
@@ -52,7 +52,7 @@
                         <a class="dropdown-item" href="register.html">注册账号</a>
                         <a class="dropdown-item" href="#">忘记密码?</a>
                     </div>
-                    <a href="#">
+                    <a href="#" id="menu-logout" class="d-none">
                         <i class="fa fa-unlock"></i>
                         注销
                     </a>
@@ -95,45 +95,45 @@
 
     <!--轮播-->
     <div class="bd-example">
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="100">
-                <img src="img/banner/banner-1.jpg" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="100">
+                    <img src="img/banner/banner-1.jpg" class="d-block w-100" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banner/banner-2.jpg" class="d-block w-100" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banner/banner-3.jpg" class="d-block w-100" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="img/banner/banner-2.jpg" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img/banner/banner-3.jpg" class="d-block w-100" alt="">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-</div>
 
     <!--主体-->
     <!--类别标题-->
@@ -174,25 +174,24 @@
             </figure>
         </div>
     </div>
-<!--卡片区开始-->
-    <div class="card-deck">
+    <!--卡片区开始-->
+    <div class="row" id="course-list">
+<!--
         <div class="card">
             <img src="img/flower/flower-1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <div class="float-left">
+                <h5 class="card-title">DVWA之暴力破解攻击</h5>
+                <span class="float-left">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
-                </div>
-                <div class="price float-right">
+                </span>
+                <span class="price float-right">
                     ¥<span class="num">20</span>
-                </div>
+                </span>
                 <div class="clear"></div>
-
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
             <div class="card-footer">
                 <small class="text-muted">Last updated 3 mins ago</small>
@@ -218,6 +217,8 @@
                 <small class="text-muted">Last updated 3 mins ago</small>
             </div>
         </div>
+        -->
+    </div>
     </div>
     <!--卡片去结束-->
     <!--页脚-->
@@ -226,11 +227,151 @@
             <p class="mt-5 mb-2 text-muted text-center">翻天印网络科技有限公司</p>
             <p class="mb-3 text-muted text-center">© 2019-2010</p>
         </div>
-
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    var token = "";
+    var login_phone = "";
+    $('#login').submit(function(event){
+        var phone = $("#phone").val();
+        var password = $("#password").val();
+
+        if (phone == '' || password == '') {
+            alert("Please fill all fields...!!!!!!");
+        } else if ((password.length) < 8) {
+            alert("Password should at least 8 character in length!");
+        } else {
+            login_phone = phone;
+            var payload = {
+                "phone": phone,
+                "password": password
+                };
+            $.ajax({
+                type: "POST",
+                url:"http://localhost:8080/api/login",
+                contentType: "application/json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data:JSON.stringify(payload),
+                success:function(data) {
+                    if (data.result == 'success') {
+                        //$("form")[0].reset();
+                        //alert('login success');
+                        onLoginSuccess(data);
+                    }else{
+                        console.log("login failed");
+                    }
+                }});
+
+        }
+        event.preventDefault();
+    });
+
+    function onLoginSuccess(data){
+        console.log("login success");
+        $("#menu-login").addClass("d-none");
+        $("#menu-logout").removeClass("d-none");
+        token = data.data;
+        $("#login-status").html(login_phone);
+    }
+
+    $("#menu-logout").click(function(){
+        $.ajax({
+                type: "POST",
+                url:"http://localhost:8080/api/logout",
+                contentType: "application/json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'token':token
+                },
+
+                success:function(data) {
+                    if (data.result == 'success') {
+                        //$("form")[0].reset();
+                        //alert('login success');
+                        onLogoutSuccess();
+                    }else{
+                        console.log("logout failed");
+                    }
+                }});
+    });
+
+    function onLogoutSuccess(){
+        console.log("log out success");
+        $("#menu-login").removeClass("d-none");
+        $("#menu-logout").addClass("d-none");
+        token = "";
+        login_phone = "";
+        $("#login-status").html("用户未登录");
+    }
+
+    function loadCourse(){
+        $.ajax({
+                type: "GET",
+                url:"http://localhost:8080/api/course/list",
+                contentType: "application/json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                success:function(data) {
+                    if (data.result == 'success') {
+                        //$("form")[0].reset();
+                        //alert('login success');
+                        onGetCourseList(data);
+                    }else{
+                        console.log("logout failed");
+                    }
+                }});
+    }
+
+    function onGetCourseList(data){
+        $.each(data.data, function(index, course){
+            createCourseDiv(course);
+            createCourseDiv(course);
+            createCourseDiv(course);
+            createCourseDiv(course);
+            createCourseDiv(course);
+            createCourseDiv(course);
+
+
+        })
+    }
+
+    function createCourseDiv(course){
+        console.log(course.name);
+        console.log(course.price);
+        console.log(course.scoreNum);
+        var divCourse = $('<div class="card col-sm-6 col-md-4 border-0"></div>');
+
+        var image = $('<img src="'+course.image+'" class="card-img-top" alt="...">');
+        var divCardBody = $('<div class="card-body">');
+        var cardTitle = $('<h5 class="card-title">'+course.name+'</h5>');
+
+        var spanLeft = $('<span class="float-left">');
+        for(var i = 0; i<course.scoreNum;i++){
+            spanLeft.append('<i class="fa fa-star"></i>');
+        }
+
+
+        var spanRight = $('<span class="price float-right">¥<span class="num">'+course.price+'</span></span>');
+        var clearFix = $('<div class="clear"></div>');
+
+        divCardBody.append(cardTitle, spanLeft, spanRight, clearFix);
+        divCourse.append(image, divCardBody);
+
+        $("#course-list").append(divCourse);
+    }
+
+    loadCourse();
+</script>
 </body>
 </html>
