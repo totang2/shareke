@@ -77,10 +77,11 @@
 
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
-        function loadCourseDetail(){
+        function loadCourseDetail(id){
+            let urlCourse = "http://localhost:7200/api/course/"+id+"/detail";
             $.ajax({
                 type: "GET",
-                url:"http://localhost:8080/api/course/detail?courseId=xxxx",
+                url: urlCourse,
                 contentType: "application/json",
                 headers: {
                     'Accept': 'application/json',
@@ -108,9 +109,10 @@
         }
 
         function loadLessons(){
+            let urlLesson = "http://localhost:7200/api/course/lessons?courseId=xxxx";
             $.ajax({
                 type: "GET",
-                url:"http://localhost:8080/api/course/lessons?courseId=xxxx",
+                url: urlLesson,
                 contentType: "application/json",
                 headers: {
                     'Accept': 'application/json',
@@ -151,7 +153,7 @@
             }
         }
 
-        loadCourseDetail();
+        loadCourseDetail(1);
         loadLessons();
     </script>
 </body>

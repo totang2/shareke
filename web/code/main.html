@@ -252,7 +252,7 @@
                 };
             $.ajax({
                 type: "POST",
-                url:"http://localhost:8080/api/login",
+                url:"http://www.3xyou.club:7100/api/login",
                 contentType: "application/json",
                 headers: {
                     'Accept': 'application/json',
@@ -278,13 +278,13 @@
         $("#menu-login").addClass("d-none");
         $("#menu-logout").removeClass("d-none");
         token = data.data;
-        $("#login-status").html(login_phone);
+        $("#login-status").html("当前用户："+login_phone);
     }
 
     $("#menu-logout").click(function(){
         $.ajax({
                 type: "POST",
-                url:"http://localhost:8080/api/logout",
+                url:"http://www.3xyou.club:7100/api/logout",
                 contentType: "application/json",
                 headers: {
                     'Accept': 'application/json',
@@ -315,7 +315,7 @@
     function loadCourse(){
         $.ajax({
                 type: "GET",
-                url:"http://localhost:8080/api/course/list",
+                url:"http://www.3xyou.club:7200/api/course/list",
                 contentType: "application/json",
                 headers: {
                     'Accept': 'application/json',
@@ -328,7 +328,7 @@
                         //alert('login success');
                         onGetCourseList(data);
                     }else{
-                        console.log("logout failed");
+                        console.log("loadCourse failed");
                     }
                 }});
     }
@@ -336,13 +336,6 @@
     function onGetCourseList(data){
         $.each(data.data, function(index, course){
             createCourseDiv(course);
-            createCourseDiv(course);
-            createCourseDiv(course);
-            createCourseDiv(course);
-            createCourseDiv(course);
-            createCourseDiv(course);
-
-
         })
     }
 
