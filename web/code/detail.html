@@ -8,13 +8,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="http://vjs.zencdn.net/7.0/video-js.min.css" rel="stylesheet"/>
+    <script src="http://vjs.zencdn.net/7.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-8">
+                    <!--
                     <img src="img/flower/flower-1.jpg" class="card-img" id="image" alt="...">
+                    -->
+                    <div class="embed-responsive">
+                        <!--
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/137857207" allowfullscreen></iframe>
+                        -->
+                        <video id=example-video class="video-js vjs-default-skin" controls>
+                            <!--
+                                <source src="http://www.xiucheng.tech:8001/hls/playlist.m3u8" type="application/vnd.apple.mpegurl"/>
+                                -->
+                            <source src="http://www.3xyou.club/hls/playlist.m3u8" type="application/vnd.apple.mpegurl"/>
+                            <p class="warning">Your browser does not support HTML5</p>
+                        </video>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card-body product-info">
@@ -155,6 +173,10 @@
 
         loadCourseDetail(1);
         loadLessons();
+
+        var player=videojs('example-video');
+        player.play();
+
     </script>
 </body>
 </html>
